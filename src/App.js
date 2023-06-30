@@ -1,16 +1,13 @@
-import NavCards from './Admin/Components/NavCards';
-import SideBar from './Admin/Components/SideBar';
+// import Dashboard from './Admin/Components/Dashboard/Dashboard';
 import './App.css';
-
+import Home from './Landing/Home/Home';
+// import Register from './Landing/Register'
 function App() {
   return (
     <section className='App'>
-      <div>
-        <SideBar />
-      </div>
-      <main className='main'>
-        <NavCards />
-      </main>
+      {/* <Dashboard/> */}
+      {/* <Register/> */}
+      <Home/>
     </section>
   );
 }

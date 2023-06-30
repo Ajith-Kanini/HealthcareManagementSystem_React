@@ -44,10 +44,6 @@ const Register = () => {
                  
                   required
                 />
-                <i style={{cursor:'pointer'}}
-                  className={`fas ${true ? 'fa-eye-slash' : 'fa-eye'}`}
-                 
-                ></i>
               </div>
               <div className="input-field">
                 <i className="far fa-id-card"></i>

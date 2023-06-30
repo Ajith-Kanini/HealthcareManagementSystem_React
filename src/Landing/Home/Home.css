@@ -1,0 +1,12 @@
+.card{
+   width: 20rem;
+   height: 30rem;
+    border-radius: 9rem;
+    background-color: #3993EE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.innerImage{
+    height: 10rem;
+}
