@@ -1,0 +1,53 @@
+.SideBar {
+    position: fixed;
+    width: 12rem;
+    background-color: #37373D;
+    color: white;
+    padding: 1rem 2rem;
+    margin:0 2rem;
+    border-radius: 1rem;
+}
+
+.SideBar h3 {
+    margin-top: 0;
+}
+
+.SideBar ul {
+    margin: 1rem 0;
+    padding: 0;
+    list-style: none;
+}
+
+.SideBar li {
+    height: 40px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.SideBar li:hover {
+    background-color: #3993EE;
+    transform: scale(1);
+    cursor: pointer;
+}
+
+.SideBar i {
+    font-size: 1.2rem;
+}
+
+.upgrade {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3993EE;
+    border-radius: 0.5rem;
+    padding: 0.7rem 1rem;
+    margin-top: 13rem;
+    font-weight: bold;
+}
