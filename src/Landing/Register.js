@@ -18,7 +18,7 @@ const Register = () => {
 
 
   return (
-    <div>
+    <div className='container-fluid'>
       <div className={`container ${isSignUpMode ? 'sign-up-mode' : ''}`}>
         <div className="forms-container">
           <div className="signin-signup">

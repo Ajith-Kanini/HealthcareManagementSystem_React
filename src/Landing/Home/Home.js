@@ -1,27 +1,30 @@
 import React from 'react'
 import './Home.css'
-import MainImg from '../../Assets/Image/chineese.png'
+// import DRImage from '../../Assets/Image/chineese.png'
 const Home = () => {
   return (
     <section className="section">
-      <nav className="navbar">
-        {/* Navigation bar content */}
-      </nav>
-      <main className="main">
-        <div className="content">
-          <h1>Protect Your Health and Take Care Of Your Health</h1>
-          <ul>
-            <li><i className="fas fa-calendar-alt" ></i> Make An Appoinment</li>
-            <li><i className="fas fa-shield-alt" ></i>Health Guarentee Forever</li>
-            <li><i className="fas fa-user-md" ></i>Find Your Best Doctor</li>
-            <li><i className="fas fa-map-marker-alt"></i>Spread In Various Places</li>
-          </ul>
-        </div>
-
-        <div className="image-container">
-          <img src={MainImg} alt="" className='innerImage' />
-        </div>
-      </main>
+          <section className="headline">
+                    <h1>Unique HealthCare</h1>
+                    <p>Protect Your Health and Take Care Of Your Health</p>
+                </section>
+                <section className="features">
+                    <div className="feature-container">
+                        <img src="https://cdn-images-1.medium.com/max/2000/1*HFAEJvVOq4AwFuBivNu_OQ.png" alt="FlexboxFeature" />
+                        <h2>Flexbox Featured</h2>
+                        <p>This pen contains use of flexbox for the headline and feature section! We use it in our mobile navbar and show the power of mixing css grid and flexbox.</p>
+                    </div>
+                    <div className="feature-container">
+                        <img src="https://blog.webix.com/wp-content/uploads/2017/06/20170621-CSS-Grid-Layout-710x355-tiny.png" alt="FlexboxFeature" />
+                        <h2>CSS Grid Navigation</h2>
+                        <p>While flexbox is used for the the mobile navbar, CSS grid is used for the desktop navbar showing many ways we can use both.</p>
+                    </div>
+                    <div className="feature-container">
+                        <img src="https://www.graycelltech.com/wp-content/uploads/2015/06/GCT-HTML5.jpg" alt="FlexboxFeature" />
+                        <h2>Basic HTML5</h2>
+                        <p>This pen contains basic html to setup the page to display the responsive navbar.</p>
+                    </div>
+                </section>
     </section>
 
   )
