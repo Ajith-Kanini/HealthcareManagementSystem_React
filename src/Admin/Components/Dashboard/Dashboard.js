@@ -3,6 +3,7 @@ import Sidebar from '../SideBar'
 import Navbar from '../Navbar'
 import NavCards from '../NavCards'
 import './Dashboard.css'
+
 const Dashboard = () => {
     return (
         <section className='Dashboard'>

@@ -1,12 +1,16 @@
-.card{
-   width: 20rem;
-   height: 30rem;
-    border-radius: 9rem;
-    background-color: #3993EE;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.innerImage{
-    height: 10rem;
-}
+.section {
+  background-color: rgb(228, 248, 246);
+  overflow: hidden;
+  }
+  h1{
+    font-weight: 900;
+    font-size: 3rem;
+    width: 33rem;
+  }
+  .image-container {
+   position: absolute;
+   left: 55rem;
+  }
+  .innerImage{
+    height: 40rem;
+  }

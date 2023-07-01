@@ -15,6 +15,7 @@ const Navbar = () => {
                     <i className="fas fa-cog" style={icon}></i>
                 </div>
             </nav>
+            <hr />
         </div>
     )
 }
