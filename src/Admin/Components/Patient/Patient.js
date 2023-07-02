@@ -30,9 +30,9 @@ const Patient = () => {
                                     {console.log(a.patientPhoto)}
                                     <img src={`https://localhost:7154/uploads/${a.patientPhoto}`} class="card-img-top" alt="ImageDescription" height="150rem" />
                                     <h3 class="card-title border-bottom font-monospace">{a.firstName}</h3>
-                                    <h6 class="card-text">Address : {a.address}</h6>
-                                    <h6 class="card-text">Gender : {a.gender}</h6>
-                                    <h6 class="card-text">phone : {a.phone}</h6>
+                                    <p class="card-text">Address : {a.address}</p>
+                                    <p class="card-text">Gender : {a.experienceYears}</p>
+                                    <p class="card-text">phone : {a.phone}</p>
                                     <div id="buttons">
                                     </div>
                                     {a.RequestStatus ? <button class="btn btn-success mt-4">Verified</button> : <button class="btn btn-success mt-4">Not Verified</button>}

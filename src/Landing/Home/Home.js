@@ -1,5 +1,8 @@
 import React from 'react'
 import './Home.css'
+import Individulal from '../../Assets/Image/MedicalFor.jpg'
+import AdultVision from '../../Assets/Image/adult-vision.jpg'
+import Child from '../../Assets/Image/child-dental.jpg'
 // import LandingNavbar from '../LandingNavbar/LandingNavbar'
 // import DRImage from '../../Assets/Image/chineese.png'
 const Home = () => {
@@ -13,19 +16,19 @@ const Home = () => {
                 </section>
                 <section className="features">
                     <div className="feature-container">
-                        <img src="https://cdn-images-1.medium.com/max/2000/1*HFAEJvVOq4AwFuBivNu_OQ.png" alt="FlexboxFeature" />
-                        <h2>Flexbox Featured</h2>
-                        <p>This pen contains use of flexbox for the headline and feature section! We use it in our mobile navbar and show the power of mixing css grid and flexbox.</p>
+                        <img src={Individulal} alt="FlexboxFeature" />
+                        <h2>Medi-Cal for Individuals and Families</h2>
+                        <p>Depending on your income, you can get free or low-cost health care services.</p>
                     </div>
                     <div className="feature-container">
-                        <img src="https://blog.webix.com/wp-content/uploads/2017/06/20170621-CSS-Grid-Layout-710x355-tiny.png" alt="FlexboxFeature" />
-                        <h2>CSS Grid Navigation</h2>
-                        <p>While flexbox is used for the the mobile navbar, CSS grid is used for the desktop navbar showing many ways we can use both.</p>
+                        <img src={AdultVision} alt="FlexboxFeature" />
+                        <h2>Adult Vision</h2>
+                        <p>Adults can enroll directly into a choice of two different providers</p>
                     </div>
                     <div className="feature-container">
-                        <img src="https://www.graycelltech.com/wp-content/uploads/2015/06/GCT-HTML5.jpg" alt="FlexboxFeature" />
-                        <h2>Basic HTML5</h2>
-                        <p>This pen contains basic html to setup the page to display the responsive navbar.</p>
+                        <img src={Child} alt="FlexboxFeature" />
+                        <h2>CHildern's dental</h2>
+                        <p>Children can get free dental care with our experienced doctors</p>
                     </div>
                 </section>
     </section>

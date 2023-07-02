@@ -2,7 +2,7 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import './App.css';
 // import PrivateRoute from './PrivateRoute/PrivateRoute'
 import { ToastContainer } from 'react-bootstrap';
-import DoctorNavBar from './Doctor/DoctorNavBar/DoctorNavBar';
+// import DoctorNavBar from './Doctor/DoctorNavBar/DoctorNavBar';
 import LandingNavBar from './Landing/LandingNavbar/LandingNavbar'
 import AdminLogin from './Admin/AdminLogin/AdminLogin';
 import SideBar from './Admin/Components/SideBar';
@@ -10,7 +10,7 @@ import Dashboard from './Admin/Components/Dashboard/Dashboard';
 import AdminDoctor from './Admin/Components/Doctors/AdminDoctor';
 import Patient from './Admin/Components/Patient/Patient';
 import DoctorAction from './Admin/Components/Action/DoctorAction';
-import PatientNavBar from './Patient/PatientNavBar/PatientNavBar'
+// import PatientNavBar from './Patient/PatientNavBar/PatientNavBar'
 // import AdminLogin from './Admin/AdminLogin/AdminLogin';
 
 function App() {
@@ -22,10 +22,10 @@ function App() {
     {/* <LandingNavBar/> */}
     <ToastContainer/>
       <div className='App'>
-        {localStorage.getItem('Role')==='User' && <PatientNavBar/>}
-        {localStorage.getItem('Role')==='Doctor' && <DoctorNavBar/>}  
+        {/* {localStorage.getItem('Role')==='User' && <PatientNavBar/>} */}
+        {/* {localStorage.getItem('Role')==='Doctor' && <DoctorNavBar/>}   */}
         {!localStorage.getItem('Role') && <LandingNavBar/>} 
-        {!localStorage.getItem('Role'==='Admin') && <SideBar/>}   
+        {/* {!localStorage.getItem('Role'==='Admin') && <SideBar/>}    */}
       </div>
 
         <Routes>

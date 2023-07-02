@@ -7,16 +7,27 @@ import '../Dashboard/Dashboard.css';
 import { Variable } from '../../../Assets/Variable';
 
 const AdminDoctor = () => {
-  const [doctorDetails, setdoctorDetails] = useState([])
+
+  const [doctorDetails, setDoctorDetails] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
+
   const fetchDoctorDetails = async () => {
     try {
       await axios.get(Variable.DOCTORAPI_URL)
-        .then(res => setdoctorDetails(res.data.filter(dt=>dt.requestStatus===true)))
+        .then(res => setDoctorDetails(res.data.filter(dt=>dt.requestStatus===true)))
     
     } catch (error) {
       console.error(error);
     }
   };
+  const handleSearchChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const filteredDoctors = doctorDetails.filter((doctor) =>
+    doctor.specialization.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
   useEffect(() => {
     fetchDoctorDetails();
   });
@@ -24,10 +35,10 @@ const AdminDoctor = () => {
     <section className='Dashboard'>
       <Sidebar />
       <main className='Dashboardmain'>
-        <Navbar />
+        <Navbar hdlchange={handleSearchChange}/>
         <div className="doctorContainer">
           <div class="row">
-            {doctorDetails.map((a) => (
+            {filteredDoctors.map((a) => (
           <div class="col-2 card card-inverse  " >
             <img src={`https://localhost:7052/uploads/${a.doctorImage}`} class="card-img-top" alt="ImageDescription" height="150rem"/>
             <h3 class="card-title border-bottom font-monospace">{a.doctoName}</h3>

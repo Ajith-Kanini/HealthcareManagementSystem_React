@@ -3,19 +3,14 @@ import './LandingNavbar.css';
 import { NavLink, Route, Routes } from 'react-router-dom';
 import RegisterPage from '../Register';
 import Home from '../Home/Home';
-import Modal from 'react-modal';
 import AdminLogin from '../../Admin/AdminLogin/AdminLogin';
 
 const LandingNavbar = () => {
     const [isSearchActive, setSearchActive] = useState(false);
     const [isMobileMenuActive, setMobileMenuActive] = useState(false);
-    const [isModalOpen, setModalOpen] = useState(false);
+
 
  
-    const closeModal = () => {
-        setModalOpen(false);
-    };
-
     const handleSearchIconClick = () => {
         setSearchActive(!isSearchActive);
     };
@@ -25,10 +20,8 @@ const LandingNavbar = () => {
     };
 
     return (
-        <div className={`page-wrapper ${isModalOpen ? 'blur' : ''}`}>
-            <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
-                <RegisterPage />
-            </Modal>
+        <div className={`page-wrapper`}>
+           
             <div className="nav-wrapper">
                 <div className="grad-bar"></div>
                 <nav className="navbar">

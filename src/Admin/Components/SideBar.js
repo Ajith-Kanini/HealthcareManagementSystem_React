@@ -7,7 +7,7 @@ const SideBar = () => {
   return (
     <section className="section">
       <div className='SideBar'>
-        <h1 className='text-white'>Admin Dashboard</h1>
+        <h3 className='text-white'>Admin Dashboard</h3>
         <hr />
         <ul>
           <li className='dash'>
