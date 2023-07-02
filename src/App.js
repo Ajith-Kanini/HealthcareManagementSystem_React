@@ -3,7 +3,7 @@ import './App.css';
 // import PrivateRoute from './PrivateRoute/PrivateRoute'
 import { ToastContainer } from 'react-bootstrap';
 // import DoctorNavBar from './Doctor/DoctorNavBar/DoctorNavBar';
-import LandingNavBar from './Landing/LandingNavbar/LandingNavbar'
+// import LandingNavBar from './Landing/LandingNavbar/LandingNavbar'
 import AdminLogin from './Admin/AdminLogin/AdminLogin';
 import SideBar from './Admin/Components/SideBar';
 import Dashboard from './Admin/Components/Dashboard/Dashboard';
@@ -24,8 +24,8 @@ function App() {
       <div className='App'>
         {/* {localStorage.getItem('Role')==='User' && <PatientNavBar/>} */}
         {/* {localStorage.getItem('Role')==='Doctor' && <DoctorNavBar/>}   */}
-        {!localStorage.getItem('Role') && <LandingNavBar/>} 
-        {/* {!localStorage.getItem('Role'==='Admin') && <SideBar/>}    */}
+        {/* {!localStorage.getItem('Role') && <LandingNavBar/>}  */}
+        {!localStorage.getItem('Role'==='Admin') && <SideBar/>}   
       </div>
 
         <Routes>

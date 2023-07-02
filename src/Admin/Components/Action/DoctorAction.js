@@ -33,6 +33,17 @@ const DoctorAction = () => {
               console.error('Error updating status:', error);
             });
     }
+    const handleReject=async(id)=>{
+       if(window.confirm("Are you sure?"))
+       {
+        try {
+            await axios.delete(`${Variable.DOCTORAPI_URL+"/"+id}`);
+            
+          } catch (error) {
+            console.error('Error deleting item:', error);
+          }
+       }
+    }
     useEffect(() => {
         fetchDoctorDetails();
     });
@@ -68,7 +79,7 @@ const DoctorAction = () => {
                                             <td>{item.address}</td>
                                             <td>
                                                 <button className='btn btn-success' onClick={()=>handleVerifyStatus(item.doctorId)}>Approve</button>
-                                                <button className='btn btn-danger'>Reject</button>
+                                                <button className='btn btn-danger' onClick={()=>handleReject(item.doctorId)}>Reject</button>
                                             </td>
                                         </tr>
                                     ))
