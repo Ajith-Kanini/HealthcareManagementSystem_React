@@ -1,48 +1,43 @@
-import { BrowserRouter } from 'react-router-dom';
-// import Dashboard from './Admin/Components/Dashboard/Dashboard';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import './App.css';
-import AppoinmentBooking from './Patient/AppoinmentBooking/AppoinmentBooking';
-// import { useState } from 'react';
-// import PatientNavBar from './Patient/PatientNavBar/PatientNavBar';
-// import PatientDoctors from './Patient/PatientDoctors/PatientDoctors';
-// import Home from './Landing/Home/Home';
-// import LandingNavbar from './Landing/LandingNavbar/LandingNavbar';
-// import DocrorProfile from './Doctor/DocrorProfile/DocrorProfile';
-// import SideBar from './Admin/Components/SideBar';
+// import PrivateRoute from './PrivateRoute/PrivateRoute'
+import { ToastContainer } from 'react-bootstrap';
+import DoctorNavBar from './Doctor/DoctorNavBar/DoctorNavBar';
+import LandingNavBar from './Landing/LandingNavbar/LandingNavbar'
+import AdminLogin from './Admin/AdminLogin/AdminLogin';
+import SideBar from './Admin/Components/SideBar';
+import Dashboard from './Admin/Components/Dashboard/Dashboard';
+import AdminDoctor from './Admin/Components/Doctors/AdminDoctor';
+import Patient from './Admin/Components/Patient/Patient';
+import DoctorAction from './Admin/Components/Action/DoctorAction';
+import PatientNavBar from './Patient/PatientNavBar/PatientNavBar'
+// import AdminLogin from './Admin/AdminLogin/AdminLogin';
 
 function App() {
-  // const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  // // Function to toggle the visibility of the popup
-  // const togglePopup = () => {
-  //   setIsPopupOpen(!isPopupOpen);
-  // };
-
+ 
   return (
     <BrowserRouter>
-    {/* <AppoinmentBooking/> */}
-    {/* <div>
-      <button onClick={togglePopup}>Open Popup</button>
-      {isPopupOpen && (
-        <div className="popup-overlay">
-          <div className="popup-content">
-          <AppoinmentBooking/>
-            
-            <button onClick={togglePopup}>Close Popup</button>
-          </div>
-        </div>
-      )}
-    </div> */}
-    <AppoinmentBooking/>
-    {/* <PatientNavBar/> */}
-    {/* <PatientDoctors/> */}
-    {/* <SideBar/> */}
-    {/* <LandingNavbar/> */}
-    {/* <Home/> */}
-    {/* <DocrorProfile/> */}
+    {/* <AdminLogin/> */}
+    {/* <DoctorNavBar/> */}
+    {/* <LandingNavBar/> */}
+    <ToastContainer/>
       <div className='App'>
-
+        {localStorage.getItem('Role')==='User' && <PatientNavBar/>}
+        {localStorage.getItem('Role')==='Doctor' && <DoctorNavBar/>}  
+        {!localStorage.getItem('Role') && <LandingNavBar/>} 
+        {!localStorage.getItem('Role'==='Admin') && <SideBar/>}   
       </div>
+
+        <Routes>
+
+          <Route path='/AdminLogin' Component={AdminLogin}/>
+          <Route path='/SidebBAR' Component={SideBar}/>
+          <Route path='/Dashboard' Component={Dashboard}/>
+          <Route path='/AdminDoctor' Component={AdminDoctor}/>
+          <Route path='/AdminPatient' Component={Patient}/>
+          <Route path='/AdminAction' Component={DoctorAction}/>
+        </Routes>
+
     </BrowserRouter>
   );
 }

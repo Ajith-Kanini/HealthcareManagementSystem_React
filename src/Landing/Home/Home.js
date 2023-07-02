@@ -1,9 +1,12 @@
 import React from 'react'
 import './Home.css'
+// import LandingNavbar from '../LandingNavbar/LandingNavbar'
 // import DRImage from '../../Assets/Image/chineese.png'
 const Home = () => {
   return (
-    <section className="section">
+    <div>
+        
+        <section className="section">
           <section className="headline">
                     <h1>Unique HealthCare</h1>
                     <p>Protect Your Health and Take Care Of Your Health</p>
@@ -26,6 +29,7 @@ const Home = () => {
                     </div>
                 </section>
     </section>
+    </div>
 
   )
 }

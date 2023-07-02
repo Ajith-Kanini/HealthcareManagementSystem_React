@@ -5,11 +5,16 @@ import { Variable } from '../../Assets/Variable';
 const DocrorProfile = () => {
 
     const [doctorDetails, setdoctorDetails] = useState({})
+    const [randomNumber, setRandomNumber] = useState(0);
 
+    const generateRandomNumber = () => {
+      const randomNumber = Math.floor(Math.random() * 101); // Generates a random number between 0 and 100
+      setRandomNumber(randomNumber);
+    };
     const fetchDoctorDetails = async () => {
         try {
 
-            await axios.get(Variable.FULLDOCTOR_DETAILS + 14)
+            await axios.get(Variable.FULLDOCTOR_DETAILS + 9)
                 .then(res => setdoctorDetails(res.data))
         } catch (error) {
             console.error(error);
@@ -47,16 +52,17 @@ const DocrorProfile = () => {
                                     <div className="col">
                                         <div className="card-profile-stats d-flex justify-content-center mt-md-5 mt-5">
                                             <div>
-                                                <span className="heading mt-4">22</span>
-                                                <span className="description mt-4">Friends</span>
+                                                <span className="heading ">{doctorDetails.experienceYears} Yrs</span>
+                                                <span className="description ">Experience</span>
                                             </div>
                                             <div>
-                                                <span className="heading mt-4">10</span>
-                                                <span className="description mt-4">Photos</span>
+                                                <span className="heading" onChange={generateRandomNumber}>{randomNumber}</span>
+                                                <span className="description ">Appoinments</span>
                                             </div>
+
                                             <div>
-                                                <span className="heading mt-4">89</span>
-                                                <span className="description mt-4">Comments</span>
+                                                <span className="heading ">{doctorDetails.experienceYears + 15}</span>
+                                                <span className="description ">Completed</span>
                                             </div>
                                         </div>
                                     </div>

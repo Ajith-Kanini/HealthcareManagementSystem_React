@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Variable } from '../../Assets/Variable';
 import './PatientDoctors.css'
-import PatientNavBar from '../PatientNavBar/PatientNavBar';
+import Check from '../../Assets/Image/check.png'
+// import PatientNavBar from '../PatientNavBar/PatientNavBar';
 import Rating from 'react-rating-stars-component';
 const PatientDoctors = () => {
     const [doctorDetails, setdoctorDetails] = useState([])
@@ -26,8 +27,8 @@ const PatientDoctors = () => {
     });
 
     return (
-        <div className='container-fluid'>
-            <PatientNavBar/>
+        <div className='container12'>
+            {/* <PatientNavBar/> */}
             <div className="row">
                 {
                     doctorDetails.map(doctorDetails =>
@@ -44,10 +45,10 @@ const PatientDoctors = () => {
                                     </div>
                                 </div>
                                 <div className="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-                                    <div className="d-flex justify-content-between">
-                                        <a href="link" className={`btn btn-sm mr-4 ${doctorDetails.requestStatus === true ? 'btn-success' : 'btn-danger'}`} >{doctorDetails.requestStatus === true ? 'Verified' : 'Not Verified'}</a>
-                                        <a href="link" className="btn btn-info btn-sm btn-default float-right">{doctorDetails.availability === true ? 'Available' : 'Not Available'}</a>
-                                    </div>
+                                    {/* <div className="d-flex justify-content-between">
+                                        <a href="link" className={`btn1 btn-sm mr-4 ${doctorDetails.requestStatus === true ? 'btn-success' : 'btn-danger'}`} >{doctorDetails.requestStatus === true ? (<img src={Check} alt='' height={'30rem'}/>) : 'Not Verified'}</a>
+                                        <a href="link" className="btn1  btn-sm  float-right">{doctorDetails.availability === true ? 'Available' : 'Not Available'}</a>
+                                    </div> */}
                                 </div>
                                 <div className="card-body pt-0 pt-md-4">
                                     <div className="row">
@@ -71,7 +72,7 @@ const PatientDoctors = () => {
                                     </div>
                                     <div className="text-center">
                                         <h3>
-                                            {doctorDetails.doctoName}<span className="font-weight-light"></span>
+                                        <img src={Check} alt='' height={'30rem'}/>  {doctorDetails.doctoName}<span className="font-weight-light"></span>
                                         </h3>
                                         <div className="h5 font-weight-300">
                                             <i className="ni location_pin mr-2"></i>{doctorDetails.address}, {doctorDetails.state}

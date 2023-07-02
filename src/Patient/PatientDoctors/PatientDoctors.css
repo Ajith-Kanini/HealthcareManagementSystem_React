@@ -1,57 +1,57 @@
 .container-fluid{
-    margin: 0 5rem;
+  margin: 0 5rem;
 }
 .card{
-    width: 20rem;
-    margin: 3rem 0;
-    height: 30rem;
+  width: 20rem;
+  margin: 3rem 0;
+  height: 30rem;
 }
 .card-profile-image {
-  position: relative;
+position: relative;
 }
 
 .card-profile-image img {
-  position: absolute;
-  left: 50%;
-  height: 8rem;
-  width: 8rem;
-  transition: all .15s ease;
-  transform: translate(-50%, -30%);
-  border-radius:100vh;
+position: absolute;
+left: 50%;
+height: 8rem;
+width: 8rem;
+transition: all .15s ease;
+transform: translate(-50%, -30%);
+border-radius:100vh;
 }
 
 .card-profile-image img:hover {
-  transform: translate(-50%, -33%);
+transform: translate(-50%, -33%);
 }
 
 .card-profile-stats {
-  padding: 1rem 0;
+padding: 1rem 0;
 }
 
 .card-profile-stats>div {
-  margin-right: 1rem;
-  padding: .875rem;
-  text-align: center;
+margin-right: 1rem;
+padding: .875rem;
+text-align: center;
 }
 
 .card-profile-stats>div:last-child {
-  margin-right: 0;
+margin-right: 0;
 }
 
 .card-profile-stats>div .heading {
-  font-size: 1.1rem;
-  font-weight: bold;
-  display: block;
+font-size: 1.1rem;
+font-weight: bold;
+display: block;
 }
 
 .card-profile-stats>div .description {
-  font-size: .875rem;
-  color: #adb5bd;
+font-size: .875rem;
+color: #adb5bd;
 }
 
 .rating{
-    margin: auto auto;
+  margin: auto auto;
 }
 .appoinment{
-    width: 100%;
+  width: 100%;
 }

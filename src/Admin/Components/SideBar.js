@@ -1,35 +1,32 @@
 import React from 'react';
 import './SideBar.css';
-import { NavLink, Route, Routes } from 'react-router-dom';
-import AdminDashboard from './Dashboard/Dashboard'
-import DoctorsPage from './Doctors/AdminDoctor';
-import PatientsPage from './Patient/Patient';
-import ActionsPage from './Action/DoctorAction';
+import { NavLink } from 'react-router-dom';
+
 
 const SideBar = () => {
   return (
     <section className="section">
       <div className='SideBar'>
-        <h3>Admin Dashboard</h3>
+        <h1 className='text-white'>Admin Dashboard</h1>
         <hr />
         <ul>
           <li className='dash'>
-            <NavLink activeClassName='active' className='navlink' to='/dashboard'>
+            <NavLink activeClassName='active' className='navlink' to='/Dashboard'>
               <i className="fas fa-th"></i>Dashboard
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName='active' className='navlink' to='/DoctorsPage'>
+            <NavLink activeClassName='active' className='navlink' to='/AdminDoctor'>
               <i className="fas fa-user-md"></i>Doctors
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName='active' className='navlink' to='/PatientsPage'>
+            <NavLink activeClassName='active' className='navlink' to='/AdminPatient'>
               <i className="fas fa-user-injured"></i>Patients
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName='active' className='navlink' to='/ActionsPage'>
+            <NavLink activeClassName='active' className='navlink' to='/AdminAction'>
               <i className="fas fa-cogs"></i>Actions
             </NavLink>
           </li>
@@ -37,13 +34,6 @@ const SideBar = () => {
         </ul>
         <h4 className='upgrade'>Upgrade Pro</h4>
       </div>
-      <Routes>
-        <Route path='/dashboard' element={<AdminDashboard />} />
-        <Route path='/DoctorsPage' element={<DoctorsPage />} />
-        <Route path='/PatientsPage' element={<PatientsPage />} />
-        <Route path='/ActionsPage' element={<ActionsPage />} />
-        {/* Other routes */}
-      </Routes>
     </section>
   );
 }

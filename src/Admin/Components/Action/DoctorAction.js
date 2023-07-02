@@ -42,7 +42,7 @@ const DoctorAction = () => {
                 <Sidebar />
                 <main className='Dashboardmain'>
                     <Navbar />
-                    <div class="container">
+                    <div class="container1">
                         <h2>Registered Doctors</h2>
                         <table class="table table-hover">
                             <thead className='bg-primary'>
