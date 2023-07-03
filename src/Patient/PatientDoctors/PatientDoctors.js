@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { Variable } from '../../Assets/Variable';
 import './PatientDoctors.css'
 import Check from '../../Assets/Image/check.png'
-// import PatientNavBar from '../PatientNavBar/PatientNavBar';
 import Rating from 'react-rating-stars-component';
+import Navbar from '../../Admin/Components/Navbar';
 const PatientDoctors = () => {
     const [doctorDetails, setdoctorDetails] = useState([])
     const fetchDoctorDetails = async () => {
@@ -17,7 +17,7 @@ const PatientDoctors = () => {
         }
     };
     const [randomNumber, setRandomNumber] = useState(0);
-
+    const [searchValue, setSearchValue] = useState('');
     const generateRandomNumber = () => {
       const randomNumber = Math.floor(Math.random() * 101); // Generates a random number between 0 and 100
       setRandomNumber(randomNumber);
@@ -25,13 +25,20 @@ const PatientDoctors = () => {
     useEffect(() => {
         fetchDoctorDetails();
     });
+    const handleSearchChange = (e) => {
+        setSearchValue(e.target.value);
+      };
+    
+      const filteredDoctors = doctorDetails.filter((doctor) =>
+        doctor.specialization.toLowerCase().includes(searchValue.toLowerCase())
+      );
 
     return (
         <div className='container12'>
-            {/* <PatientNavBar/> */}
+            <Navbar hdlchange={handleSearchChange}/>
             <div className="row">
                 {
-                    doctorDetails.map(doctorDetails =>
+                    filteredDoctors.map(doctorDetails =>
                     (
                         <div className="col">
                             <div className="card card-profile shadow">

@@ -10,12 +10,12 @@ const AdminDoctor = () => {
 
   const [doctorDetails, setDoctorDetails] = useState([]);
   const [searchValue, setSearchValue] = useState('');
-
+  // const [totalDoctors,setTotalDoctors]=useState();
   const fetchDoctorDetails = async () => {
     try {
       await axios.get(Variable.DOCTORAPI_URL)
         .then(res => setDoctorDetails(res.data.filter(dt=>dt.requestStatus===true)))
-    
+        // setTotalDoctors(doctorDetails.length)
     } catch (error) {
       console.error(error);
     }

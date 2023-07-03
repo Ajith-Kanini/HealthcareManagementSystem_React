@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import './PatientNavBar.css';
-import AppoinmentBook from '../AppoinmentBooking/AppoinmentBooking';
-import { NavLink, Route, Routes } from 'react-router-dom';
-// import RegisterPage from '../../Landing/Register';
-import Home from '../../Landing/Home/Home';
-import PatientDoctors from '../PatientDoctors/PatientDoctors';
-import MyAppoinments from '../MyAppoinments/MyAppoinments';
-// import Register from '../../Landing/Register';
+import { NavLink } from 'react-router-dom';
 
 const PatientNavBar = () => {
   const [isSearchActive, setSearchActive] = useState(false);
@@ -21,7 +15,7 @@ const PatientNavBar = () => {
   };
 
   const handleDropdownClick = () => {
-    setSearchActive(false); // Close search input if open
+    setSearchActive(false); 
   };
 
   return (
@@ -37,19 +31,19 @@ const PatientNavBar = () => {
               <span className="bar"></span>
             </div>
             <ul className={`nav ${isSearchActive ? 'search' : 'no-search'}`}>
-              <li className="nav-item"><NavLink to={'/Home'}>Home</NavLink></li>
+              <li className="nav-item"><NavLink to={'/PatientHomePage'}>Home</NavLink></li>
               <li className="nav-item dropdown" onClick={handleDropdownClick}>
-                <NavLink to={'/Appoinment'} className="dropbtn">Book an Appoinment</NavLink>
+                <NavLink to={'/PatientAppoinmentBooking'} className="dropbtn">Book an Appoinment</NavLink>
               </li>
-              <li className="nav-item"><NavLink to={'/myAppoinments'}>My Appointments</NavLink></li>
-              <li className="nav-item"><NavLink to={'/PDoctors'}>Doctors</NavLink></li>
+              <li className="nav-item"><NavLink to={'/PatientMyAppoinments'}>My Appointments</NavLink></li>
+              <li className="nav-item"><NavLink to={'/PatientDoctors'}>Doctors</NavLink></li>
               <li className="nav-item">
-                <NavLink to={'/Home'} style={{ backgroundColor: '#23A6D5', padding: '.7rem 1.4rem', borderRadius: '2rem' }} onClick={() => localStorage.clear('Role')}>
+                <NavLink to={'/LandingHome'} className="signtn" onClick={() => localStorage.clear('Role')}>
                   Logout
                 </NavLink>
               </li>
               <li className="nav-item">
-                <i className="fas fa-user-circle" style={{ cursor: 'pointer', height: '2rem', color: '#23A6D5' }}></i>
+                <NavLink to={'/PatientProfile'}><i className="fas fa-user-circle" style={{ cursor: 'pointer', height: '2rem', color: '#23A6D5' }}></i></NavLink>
               </li>
               <i className="fas fa-search" id="search-icon"  onClick={handleSearchIconClick}></i>
               <input className={`search-input ${isSearchActive ? 'search-active' : ''}`} type="text" placeholder="Search.." />
@@ -57,14 +51,6 @@ const PatientNavBar = () => {
           </nav>
         </div>
       </div>
-      <Routes>
-        {/* <Route path='/signin' Component={Register} /> */}
-        <Route path='/Patienthome' Component={Home} />
-        <Route path='/Home' Component={Home} />
-        <Route path='/Appoinment' Component={AppoinmentBook} />
-        <Route path='/PDoctors' Component={PatientDoctors} />
-        <Route path='/myAppoinments' Component={MyAppoinments} />
-      </Routes>
     </div>
   );
 };

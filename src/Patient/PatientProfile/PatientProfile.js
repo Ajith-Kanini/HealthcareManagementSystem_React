@@ -2,7 +2,6 @@ import axios from 'axios';
 import { Variable } from '../../Assets/Variable';
 import React, { useEffect, useState } from 'react'
 import './PatientProfile.css'
-import Rating from 'react-rating-stars-component';
 const PatientProfile = () => {
 
     const [patient, setPatient] = useState([])
@@ -10,7 +9,7 @@ const PatientProfile = () => {
         try {
             await axios.get(Variable.PATIENT_URL)
                 .then(res => {
-                    setPatient(res.data.filter(dt => dt.email === 'sundar@gmail.com'))
+                    setPatient(res.data.filter(dt => dt.email === 'siva@gmail.com'))
                     // console.log(res.data);
 
                 })
@@ -26,7 +25,7 @@ const PatientProfile = () => {
     });
 
     return (
-        <div>
+        <div className='ctnr' >
             <div className='container-fluid'>
                 <div className="row">
                     {
@@ -86,9 +85,7 @@ const PatientProfile = () => {
                                             </div>
 
 
-                                            <div>
-                                                <Rating count={5} value={patient.rating} size={24} activeColor='#ffd700' inactiveColor='#e4e4e4' classNames="rating" />
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>

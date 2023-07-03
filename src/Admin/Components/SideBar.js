@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './SideBar.css';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 
 const SideBar = () => {
+
+  useEffect(()=>{
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('Admin_Token')}`;
+
+  },[])
   return (
     <section className="section">
       <div className='SideBar'>

@@ -3,8 +3,7 @@ import './AdminLogin.css'
 import { Variable } from '../../Assets/Variable';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import Sidebar from '../../Admin/Components/SideBar'
-import { Route, Routes,useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const AdminLogin = () => {
     const navigate=useNavigate()
     const [formData, setFormData] = useState({
@@ -44,9 +43,6 @@ const AdminLogin = () => {
 
                 </form>
             </div>
-            <Routes>
-                <Route path='/Sidebar' Component={Sidebar}/>
-            </Routes>
         </div>
     )
 }

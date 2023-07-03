@@ -6,6 +6,9 @@
     margin: 3rem 0;
     height: 30rem;
 }
+.ctnr{
+  margin-left: 35rem;
+}
 .card-profile-image {
   position: relative;
 }

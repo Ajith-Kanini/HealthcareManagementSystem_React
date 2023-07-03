@@ -6,7 +6,7 @@ const DocrorProfile = () => {
 
     const [doctorDetails, setdoctorDetails] = useState({})
     const [randomNumber, setRandomNumber] = useState(0);
-
+    const docid=29;
     const generateRandomNumber = () => {
       const randomNumber = Math.floor(Math.random() * 101); // Generates a random number between 0 and 100
       setRandomNumber(randomNumber);
@@ -14,12 +14,23 @@ const DocrorProfile = () => {
     const fetchDoctorDetails = async () => {
         try {
 
-            await axios.get(Variable.FULLDOCTOR_DETAILS + 9)
+            await axios.get(Variable.FULLDOCTOR_DETAILS + docid)
                 .then(res => setdoctorDetails(res.data))
         } catch (error) {
             console.error(error);
         }
     };
+    const handleDeleteAccount=async(id)=>{
+        if(window.confirm("Are you sure? It will delete your informations permanently"))
+       {
+        try {
+            await axios.delete(`${Variable.DOCTORAPI_URL+"/"+id}`);
+            
+          } catch (error) {
+            console.error('Error deleting item:', error);
+          }
+       }
+    }
     const handleUpdate = () => {
         setdoctorDetails({})
     }
@@ -164,7 +175,7 @@ const DocrorProfile = () => {
                                         </div>
                                     </div>
                                     <hr className="my-4" />
-                                    <button className='btn btn-danger w-100'>Delete</button>
+                                    <button className='btn btn-danger w-100' onClick={()=>handleDeleteAccount(docid)}>Delete My Account</button>
                                 </form>
                             </div>
                         </div>

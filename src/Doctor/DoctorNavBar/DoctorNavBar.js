@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { NavLink, Route, Routes } from 'react-router-dom';
-import Home from '../../Landing/Home/Home';
+import { NavLink} from 'react-router-dom';
 import './DoctorNavBar.css'
-import DProfile from '../DocrorProfile/DocrorProfile'
-import DoctorAppoinment from '../DoctorAppoinment/DoctorAppoinment';
+
 
 const DoctorNavBar = () => {
         const [isSearchActive, setSearchActive] = useState(false);
@@ -29,12 +27,12 @@ const DoctorNavBar = () => {
                             <span className="bar"></span>
                         </div>
                         <ul className={`nav ${isSearchActive ? 'search' : 'no-search'}`}>
-                            <li className="nav-item"><NavLink to={'/Home'}>Home</NavLink></li>
-                            <li className="nav-item"><NavLink to={'/Appoinment'}>Services</NavLink></li>
-                            <li className="nav-item"><NavLink to={'/myAppoinments'}>My Appointments</NavLink></li>
-                            <li className="nav-item"><NavLink to={'/patientprofile'}>Contact Us</NavLink></li>
-                            <li className="nav-item"><NavLink to={'/Home'} onClick={localStorage.clear('Role')} style={{ backgroundColor: '#23A6D5', padding: '.7rem 1.4rem', borderRadius: '2rem' }}  >Logout</NavLink></li>
-                            <li className="nav-item"><NavLink to={'/doctorProfile'}><i class="fas fa-user-circle" style={{cursor:'pointer',height:'2rem',color:'#23A6D5'}}></i></NavLink></li>
+                            <li className="nav-item"><NavLink to={'/LandingHome'}>Home</NavLink></li>
+                            <li className="nav-item"><NavLink >Services</NavLink></li>
+                            <li className="nav-item"><NavLink to={'/DoctorAppoinment'}>My Appointments</NavLink></li>
+                            <li className="nav-item"><NavLink >Contact Us</NavLink></li>
+                            <li className="nav-item"><NavLink to={'/LandingHome'} onClick={localStorage.clear('Role')} style={{ backgroundColor: '#23A6D5', padding: '.7rem 1.4rem', borderRadius: '2rem' }}  >Logout</NavLink></li>
+                            <li className="nav-item"><NavLink to={'/DoctorProfile'}><i class="fas fa-user-circle" style={{cursor:'pointer',height:'2rem',color:'#23A6D5'}}></i></NavLink></li>
                             <i className="fas fa-search" id="search-icon" onClick={handleSearchIconClick}></i>
                             <input className={`search-input ${isSearchActive ? 'search-active' : ''}`} type="text" placeholder="Search.." />
                         </ul>
@@ -42,13 +40,7 @@ const DoctorNavBar = () => {
                 </div>
 
             </div>
-            <Routes>
-                {/* <Route path='/signin' Component={RegisterPage} /> */}
-                <Route path='/Patienthome' Component={Home} />
-                <Route path='/Home' Component={Home} />
-                <Route path='/doctorProfile' Component={DProfile} />
-                <Route path='/myAppoinments' Component={DoctorAppoinment} />
-            </Routes>
+           
         </div>
   )
 }

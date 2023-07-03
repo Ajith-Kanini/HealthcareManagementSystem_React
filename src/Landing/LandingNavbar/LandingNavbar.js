@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import './LandingNavbar.css';
-import { NavLink, Route, Routes } from 'react-router-dom';
-import RegisterPage from '../Register';
-import Home from '../Home/Home';
-import AdminLogin from '../../Admin/AdminLogin/AdminLogin';
-
+import { NavLink } from 'react-router-dom';
 const LandingNavbar = () => {
     const [isSearchActive, setSearchActive] = useState(false);
     const [isMobileMenuActive, setMobileMenuActive] = useState(false);
@@ -32,17 +28,17 @@ const LandingNavbar = () => {
                         <span className="bar"></span>
                     </div>
                     <ul className={`nav ${isSearchActive ? 'search' : 'no-search'}`}>
-                        <li className="nav-item"><NavLink to={'/Home'}>Home</NavLink></li>
+                        <li className="nav-item"><NavLink to={'/LandingHome'}>Home</NavLink></li>
                         <li className="nav-item"><NavLink>Services</NavLink></li>
                         <li className="nav-item"><NavLink>Coverages</NavLink></li>
                         <li className="nav-item"><NavLink>Contact Us</NavLink></li>
                         <li className="nav-item">
-                            <NavLink style={{ backgroundColor: '#23A6D5', padding: '.7rem 1.4rem', borderRadius: '2rem' }} to={'/signin'}>
+                            <NavLink className="signtn" to={'/Register'}>
                                 Signin
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink style={{ backgroundColor: '#23A6D5', padding: '.7rem 1.4rem', borderRadius: '2rem' }} to={'/adminSignin'}>
+                            <NavLink to={'/AdminLogin'} className="signtn">
                                 Admin Login
                             </NavLink>
                         </li>
@@ -51,13 +47,6 @@ const LandingNavbar = () => {
                     </ul>
                 </nav>
             </div>
-
-            <Routes>
-                <Route path='/signin' element={<RegisterPage />} />
-                <Route path='/adminSignin' element={<AdminLogin/>} />
-                <Route path='/Home' element={<Home />} />
-
-                <Route path='/' element={<Home />} />            </Routes>
         </div>
     );
 }

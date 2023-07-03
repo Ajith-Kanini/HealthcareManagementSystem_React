@@ -30,7 +30,7 @@ const DoctorAction = () => {
             })
             .catch(error => {
               // Handle the error
-              console.error('Error updating status:', error);
+              console.error('Error updating status :', error);
             });
     }
     const handleReject=async(id)=>{

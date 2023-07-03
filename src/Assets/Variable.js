@@ -7,6 +7,7 @@ export const Variable={
     DOCTOR_LOGIN:'https://localhost:7052/api/DoctorAuthentication/Doctor',
     PATIENT_LOGIN:'https://localhost:7154/api/DoctorAuthentication/Patient',
     APPOINMENT_URL:'https://localhost:7154/api/AppoinmentBookings',
-    ADMIN_URL:'https://localhost:7287/api/AdminAuthentication/Admin'
+    ADMIN_URL:'https://localhost:7287/api/AdminAuthentication/Admin',
+    PATHENT_EMAIL:'https://localhost:7154/api/PatientDetails'
 
 }
