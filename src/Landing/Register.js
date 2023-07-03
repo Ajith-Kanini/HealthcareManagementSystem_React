@@ -10,15 +10,15 @@ const Register = () => {
   const navigate = useNavigate();
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [role, setRole] = useState('');
-  const [loginError,setLoginError ] = useState('');
-  const [emailchechError,setemailchechError ] = useState('');
-  const [emailCheck,setEmailcheck]=useState([])
+  const [loginError, setLoginError] = useState('');
+  const [emailchechError, setemailchechError] = useState('');
+  const [emailCheck, setEmailcheck] = useState([])
   const [formErrors, setFormErrors] = useState({});
   const [formData, setFormData] = useState({
     doctoName: '',
     email: '',
     doctorPassword: '',
-    cpassword:''
+    cpassword: ''
   });
 
   const reset = {
@@ -57,31 +57,37 @@ const Register = () => {
       const isValid = validateForm();
 
       if (isValid) {
-        if(emailCheck.find(dt=>dt.email===formData.email))
-        {
-          setemailchechError('Email already exist! Try with another Email ')
-          console.log(emailchechError);
-        }
-        else{
-          setemailchechError('')
-          if (role === 'Doctor') {
-            // Make the API request
+        if (role === 'Doctor') {
+          if (emailCheck.find(dt => dt.email === formData.email)) {
+            setemailchechError('Email already exist! Try with another Email ')
+            console.log(emailchechError);
+          }
+          else {
+            setemailchechError('')
             const response = await axios.post(Variable.DOCTORAPI_URL, {
               doctoName: formData.doctoName,
               email: formData.email,
               doctorPassword: formData.doctorPassword
             });
+            setIsSignUpMode(!isSignUpMode);
             console.log(response.data);
             setFormData(reset);
             toast.success('Registered successfully');
-          } else {
-            // Make the API request
+
+          }
+
+        } else {
+          if (emailCheck.find(dt => dt.email === formData.email)) {
+
+          }
+          else {
             const response = await axios.post(Variable.USER_URL, {
               firstName: formData.doctoName,
               email: formData.email,
               patientPassword: formData.doctorPassword
             });
             toast.success('Registered successfully');
+            setIsSignUpMode(!isSignUpMode);
             setFormData(reset);
             console.log(response.data);
           }
@@ -94,16 +100,12 @@ const Register = () => {
   };
 
   const handleLogin = async () => {
-    try {
-      console.log(role);
-      console.log(Variable.PATIENT_LOGIN);
-
-      // Validate the form data
+    try { 
       const isValid = validateForm();
 
       if (isValid) {
         if (role === 'Doctor') {
-          // Make the API request
+
           const response = await axios.post(Variable.DOCTOR_LOGIN, {
             email: formData.email,
             doctorPassword: formData.doctorPassword
@@ -111,10 +113,12 @@ const Register = () => {
           console.log(response.data);
           localStorage.setItem('Role', role);
           localStorage.setItem('Doctor_Token', response.data);
-          setFormData(reset);
-          toast.success('Welcome');
+          localStorage.setItem('email',formData.email)
+          localStorage.getItem('Role') === 'User' ?
+            navigate('/PatientHomePage') : navigate('/PatientHomePage')
+            window.location.reload()
         } else {
-          // Make the API request
+
           const response = await axios.post(Variable.PATIENT_LOGIN, {
             email: formData.email,
             patientPassword: formData.doctorPassword
@@ -122,29 +126,35 @@ const Register = () => {
           localStorage.setItem('Role', role);
           localStorage.setItem('email', formData.email);
           localStorage.setItem('Patient_Token', response.data);
-          toast.success('Welcome');
-          setFormData(reset);
           console.log(response.data);
 
           localStorage.getItem('Role') === 'User' ?
             navigate('/PatientHomePage') : navigate('/PatientHomePage')
+            window.location.reload()
         }
       }
     } catch (error) {
       setLoginError('Invalid credentials');
-      // alert('Invalid Credentials');
-      //console.error(error);
     }
 
   };
-  const handleEmailcheck= async()=>{
+  const handleEmailcheckPatient = async () => {
     try {
 
       await axios.get(Variable.PATHENT_EMAIL)
-          .then(res => setEmailcheck(res.data))
-  } catch (error) {
+        .then(res => setEmailcheck(res.data))
+    } catch (error) {
       console.error(error);
+    }
   }
+  const handleEmailcheckDoctor = async () => {
+    try {
+
+      await axios.get(Variable.DOCTORAPI_URL)
+        .then(res => setEmailcheck(res.data))
+    } catch (error) {
+      console.error(error);
+    }
   }
   const handleSignUpClick = () => {
     setIsSignUpMode(true);
@@ -177,8 +187,8 @@ const Register = () => {
     } else if (name === 'doctoName') {
       if (isSignUpMode && !value) {
         error = 'Username is required';
-      } else if (isSignUpMode && value.length < 6) {
-        error = 'Username must be at least 6 characters long';
+      } else if (isSignUpMode && value.length < 5) {
+        error = 'Username must be at least 5 characters long';
       } else if (isSignUpMode && !/^[a-zA-Z]+$/.test(value)) {
         error = 'Username can only contain alphabetic characters';
       }
@@ -199,9 +209,12 @@ const Register = () => {
       [name]: value,
     }));
   };
-  useEffect(()=>{
-    handleEmailcheck()
-  },[])
+  useEffect(() => {
+    handleEmailcheckPatient()
+    handleEmailcheckDoctor()
+    setLoginError('')
+    setemailchechError('')
+  }, [])
 
 
   return (
@@ -395,7 +408,7 @@ const Register = () => {
             <img src={DOCHEART} className="image" alt="" />
           </div>
         </div>
-      </div>``
+      </div>
     </div>
   );
 };

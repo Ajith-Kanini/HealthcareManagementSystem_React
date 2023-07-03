@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './PatientNavBar.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const PatientNavBar = () => {
   const [isSearchActive, setSearchActive] = useState(false);
@@ -9,7 +10,7 @@ const PatientNavBar = () => {
   const handleSearchIconClick = () => {
     setSearchActive(!isSearchActive);
   };
-
+  const navigate=useNavigate()
   const handleMenuToggleClick = () => {
     setMobileMenuActive(!isMobileMenuActive);
   };
@@ -17,6 +18,15 @@ const PatientNavBar = () => {
   const handleDropdownClick = () => {
     setSearchActive(false); 
   };
+  const handlelogout=()=>{
+    localStorage.clear('Role')
+    navigate('/LandingHome')
+    window.location.reload()
+  }
+  useEffect(()=>{
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('Patient_Token')}`;
+
+  },[])
 
   return (
     <div>
@@ -38,7 +48,7 @@ const PatientNavBar = () => {
               <li className="nav-item"><NavLink to={'/PatientMyAppoinments'}>My Appointments</NavLink></li>
               <li className="nav-item"><NavLink to={'/PatientDoctors'}>Doctors</NavLink></li>
               <li className="nav-item">
-                <NavLink to={'/LandingHome'} className="signtn" onClick={() => localStorage.clear('Role')}>
+                <NavLink to={'/LandingHome'} className="signtn" onClick={ handlelogout}>
                   Logout
                 </NavLink>
               </li>

@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import { NavLink} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink,useNavigate} from 'react-router-dom';
 import './DoctorNavBar.css'
+import axios from 'axios';
 
 
 const DoctorNavBar = () => {
         const [isSearchActive, setSearchActive] = useState(false);
         const [isMobileMenuActive, setMobileMenuActive] = useState(false);
-    
+        const navigate=useNavigate()
         const handleSearchIconClick = () => {
             setSearchActive(!isSearchActive);
         };
@@ -14,6 +15,15 @@ const DoctorNavBar = () => {
         const handleMenuToggleClick = () => {
             setMobileMenuActive(!isMobileMenuActive);
         };
+        const handlelogout=()=>{
+            localStorage.clear('Role')
+            navigate('/LandingHome')
+            window.location.reload()
+          }
+          useEffect(()=>{
+            axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('Doctor_Token')}`;
+        
+          },[])
   return (
     <div>
             <div className="page-wrapper">
@@ -31,7 +41,7 @@ const DoctorNavBar = () => {
                             <li className="nav-item"><NavLink >Services</NavLink></li>
                             <li className="nav-item"><NavLink to={'/DoctorAppoinment'}>My Appointments</NavLink></li>
                             <li className="nav-item"><NavLink >Contact Us</NavLink></li>
-                            <li className="nav-item"><NavLink to={'/LandingHome'} onClick={localStorage.clear('Role')} style={{ backgroundColor: '#23A6D5', padding: '.7rem 1.4rem', borderRadius: '2rem' }}  >Logout</NavLink></li>
+                            <li className="nav-item"><NavLink to={'/LandingHome'} onClick={ handlelogout} style={{ backgroundColor: '#23A6D5', padding: '.7rem 1.4rem', borderRadius: '2rem' }}  >Logout</NavLink></li>
                             <li className="nav-item"><NavLink to={'/DoctorProfile'}><i class="fas fa-user-circle" style={{cursor:'pointer',height:'2rem',color:'#23A6D5'}}></i></NavLink></li>
                             <i className="fas fa-search" id="search-icon" onClick={handleSearchIconClick}></i>
                             <input className={`search-input ${isSearchActive ? 'search-active' : ''}`} type="text" placeholder="Search.." />

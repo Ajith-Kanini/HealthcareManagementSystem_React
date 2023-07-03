@@ -30,17 +30,14 @@ function App() {
     <BrowserRouter>
     <ToastContainer/>
       <div className='App'>
-        {/* <PatientNavBar/> */}
-        {/* <LandingNavbar/> */}
-        {/* <DoctorNavBar/> */} 
-        {/* <SideBar/> */}
-        {/* {localStorage.getItem('Role')==='User' && <PatientNavBar/>}
+        {localStorage.getItem('Role')==='User' && <PatientNavBar/>}
         {localStorage.getItem('Role')==='Doctor' && <DoctorNavBar/>}  
-        {!localStorage.getItem('Role') && <LandingNavBar/>}  */}
-        {/* {!localStorage.getItem('Role'==='Admin') && <SideBar/>}    */}
+        {!localStorage.getItem('Role') && <LandingNavbar/>} 
+        { localStorage.getItem('Role'==='Admin') && <Dashboard/>}   
       </div>
 
         <Routes>
+        <Route path='' Component={Home}/>
           <Route path='/AdminLogin' Component={AdminLogin}/>
           <Route path='/Dashboard' Component={Dashboard}/>
           <Route path='/AdminDoctor' Component={AdminDoctor}/>
