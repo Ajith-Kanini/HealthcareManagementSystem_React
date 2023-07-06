@@ -24,9 +24,10 @@ const AdminDoctor = () => {
     setSearchValue(e.target.value);
   };
 
-  const filteredDoctors = doctorDetails.filter((doctor) =>
-    doctor.specialization.toLowerCase().includes(searchValue.toLowerCase())
-  );
+  const filteredDoctors = doctorDetails.filter((doctor) => {
+    const specialization = doctor.specialization || '';
+    return specialization.toLowerCase().includes(searchValue.toLowerCase());
+  });
 
   useEffect(() => {
     fetchDoctorDetails();

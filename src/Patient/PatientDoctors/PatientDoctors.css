@@ -2,9 +2,10 @@
   margin: 0 5rem;
 }
 .card{
-  width: 20rem;
-  margin: 3rem 0;
-  height: 30rem;
+  width: 25rem;
+  height: 35rem;
+  padding: 1rem;
+
 }
 .card-profile-image {
 position: relative;
@@ -24,27 +25,37 @@ border-radius:100vh;
 transform: translate(-50%, -33%);
 }
 
-.card-profile-stats {
-padding: 1rem 0;
+.card-profile-stats1 {
+  margin-top: 2rem;
+  margin-left: 20px;
+ display: flex;
+ align-items: center;
+ gap: 1rem;
 }
 
 .card-profile-stats>div {
 margin-right: 1rem;
 padding: .875rem;
+align-items: center;
 text-align: center;
 }
 
 .card-profile-stats>div:last-child {
 margin-right: 0;
 }
+.innerr{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
-.card-profile-stats>div .heading {
+}
+.card-profile-stats>div .heading1 {
 font-size: 1.1rem;
 font-weight: bold;
 display: block;
 }
 
-.card-profile-stats>div .description {
+.card-profile-stats>div .description1 {
 font-size: .875rem;
 color: #adb5bd;
 }

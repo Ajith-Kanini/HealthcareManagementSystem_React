@@ -1,5 +1,6 @@
-.SideBar {
+.SideBar123 {
     position: fixed;
+    height: 42rem;
     width: 17rem;
     background-color: #37373D;
     color: white;
@@ -14,18 +15,26 @@
     gap: 1rem;
     text-decoration: none;
 }
-.SideBar h3 {
+.navlink i{
+    color: white;
+}
+.SideBar123 h3 {
     margin-top: 0;
 }
 
-.SideBar ul {
+.SideBar123 ul {
     margin: 1rem 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
     list-style: none;
 }
-
-.SideBar li {
+i{
+    color: white;
+}
+.SideBar123 li {
     height: 40px;
+    flex-direction: column;
     line-height: 40px;
     display: flex;
     align-items: center;
@@ -38,15 +47,15 @@
  .dash{
     background-color: #3993EE;
     border-radius: 0.5rem;
-    padding: 0.1rem .5rem;
+    padding: 0.1rem .9rem;
 }
-.SideBar li:hover {
+.SideBar123 li:hover {
     background-color: #3993EE;
     transform: scale(1);
     cursor: pointer;
 }
 
-.SideBar i {
+.SideBar123 i {
     font-size: 1.2rem;
 }
 
@@ -58,5 +67,5 @@
     background-color: #3993EE;
     border-radius: 0.5rem;
     padding: 0.7rem 1rem;
-    margin-top: 14rem
+    margin-top: 24rem
 }

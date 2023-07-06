@@ -19,7 +19,12 @@
   transition: transform 0.7s ease-in-out;
   color: #3498db;
 }
-
+.usrName{
+  display: flex;
+  gap: .5rem;
+ 
+  align-items:center;
+}
 .no-search {
   transform: translateX(0);
   transition: transform 0.7s ease-in-out;

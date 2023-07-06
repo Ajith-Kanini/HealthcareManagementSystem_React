@@ -1,4 +1,9 @@
-
+.usrName{
+  display: flex;
+  gap: .5rem;
+ 
+  align-items:baseline;
+}
 .signtn {
   background-color: #23a6d5;
   padding: .7rem 1.4rem;

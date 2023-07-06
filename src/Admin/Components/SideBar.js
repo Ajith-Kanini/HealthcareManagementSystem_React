@@ -17,14 +17,14 @@ const SideBar = () => {
 
   },[])
   return (
-    <section className="section">
-      <div className='SideBar'>
+    <section className="section123">
+      <div className='SideBar123'>
         <h3 className='text-white'>Admin Dashboard</h3>
         <hr />
         <ul>
           <li className='dash'>
             <NavLink activeClassName='active' className='navlink' to='/Dashboard'>
-              <i className="fas fa-th"></i>Dashboard
+              <i className="fas fa-th" style={{color:'white'}}></i>Dashboard
             </NavLink>
           </li>
           <li>

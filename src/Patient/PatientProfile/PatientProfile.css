@@ -1,60 +1,79 @@
-.container-fluid{
-    margin: 0 5rem;
+.profile-container {
+  max-width: 500px;
+  height: fit-content;
+  border: 2px solid blueviolet;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+  align-content: center;
+  align-items: center;
 }
-.card{
-    width: 20rem;
-    margin: 3rem 0;
-    height: 30rem;
-}
-.ctnr{
-  margin-left: 35rem;
-}
-.card-profile-image {
+
+.profile-photo-container {
   position: relative;
+  display: inline-block;
 }
 
-.card-profile-image img {
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.upload-label {
   position: absolute;
-  left: 50%;
-  height: 8rem;
-  width: 8rem;
-  transition: all .15s ease;
-  transform: translate(-50%, -30%);
-  border-radius:100vh;
+  opacity: .8;
+  bottom: 1rem;
+  left: 80%;
+  background-color: blue;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  color: #fff;
+  border-radius: 5rem;
+  cursor: pointer;
 }
 
-.card-profile-image img:hover {
-  transform: translate(-50%, -33%);
+
+h2 {
+  margin-bottom: 10px;
 }
 
-.card-profile-stats {
-  padding: 1rem 0;
+p {
+  margin: 5px 0;
 }
 
-.card-profile-stats>div {
-  margin-right: 1rem;
-  padding: .875rem;
+.edit-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+}
+
+.edit-form {
   text-align: center;
 }
 
-.card-profile-stats>div:last-child {
-  margin-right: 0;
-}
-
-.card-profile-stats>div .heading {
-  font-size: 1.1rem;
-  font-weight: bold;
+.edit-form label {
   display: block;
+  margin-top: 10px;
 }
 
-.card-profile-stats>div .description {
-  font-size: .875rem;
-  color: #adb5bd;
+.edit-form input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
 }
 
-.rating{
-    margin: auto auto;
+.save-button,
+.cancel-button {
+  margin-top: 10px;
+  padding: 5px 10px;
 }
-.appoinment{
-    width: 100%;
+
+.save-button {
+  margin-right: 10px;
 }

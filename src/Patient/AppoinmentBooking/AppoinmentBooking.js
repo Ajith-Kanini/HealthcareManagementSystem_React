@@ -11,8 +11,9 @@ const AppoinmentBooking = () => {
   const fetchPatientDetail = async () => {
 
     try {
-      await axios.get(Variable.USER_URL + "/" + 3)
-        .then(res => setPatient(res.data));
+      await axios.get(Variable.USER_URL)
+        .then(res => setPatient(res.data.find(data=>data.email===localStorage.getItem('email'))));
+
     } catch (error) {
       console.error(error);
     }
@@ -32,25 +33,22 @@ const AppoinmentBooking = () => {
   };
 
   const handleAppoinmentBooking = async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
   
     try {
-      localStorage.setItem('value', Variable.APPOINMENT_URL);
       const response = await axios.post(Variable.APPOINMENT_URL, {
         diagnose: special,
-        appointmentDate: '2020-03-12',
+        appointmentDate: document.getElementById('date').value,
         doctorId: assignDoctor.doctorId,
-        patientId: 1,
-        isConfirmed: true
+        patientId: localStorage.getItem('Id'),
+        isConfirmed: false
       });
       console.log(response.data);
     } catch (error) {
       console.error(error);
     }
-    console.log(special);
   };
   
-
   useEffect(() => {
     fetchDoctorDetails();
     fetchPatientDetail();
@@ -195,7 +193,8 @@ const AppoinmentBooking = () => {
             </div>
 
             <div>
-              <input className="formbold-btn" type='submit' value='Book Appointment' onClick={handleAppoinmentBooking} />
+              <input className="formbold-btn23" type='submit' value='Book Appointment' onClick={handleAppoinmentBooking} 
+              style={{backgroundColor:'#6a64f1'}}/>
             </div>
           </form>
         </div>

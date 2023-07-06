@@ -3,12 +3,23 @@
   width: 100%;
   height: 50vh;
   min-height: 350px;
-  /* background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1435224668334-0f82ec57b605?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80'); */
-  background: #3993EE;
+  background-image: url('https://img.freepik.com/free-photo/medium-shot-doctors-wearing-protective-equipment_23-2149994405.jpg?w=1380&t=st=1688500955~exp=1688501555~hmac=aee39a7802f9d6ffb2a3ed9212b6dd0f7c5bc3ef41a71a456f814905329ff0e5');
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.heading, .slogan{
+
+  text-align: start;
+  margin-left: 220px;
+}
+.heading{
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+.slogan{
+  color: #4b4b4b;
 }
 
 .features {
@@ -23,6 +34,13 @@
 .feature-container {
   flex-basis: 30%;
   margin-top: 10px;
+  transition: 0.5s;
+
+}
+.feature-container:hover{
+  transform: scaleY(1.2);
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px 10px rgba(105, 105, 105, 0.34);
 }
 
 .feature-container p {
@@ -35,6 +53,16 @@
 .feature-container img {
   width: 100%;
   margin-bottom: 15px;
+
+}
+.fhead{
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 15px;
+}
+.fpara{
+  font-size: 12px;
+  text-align: justify;
 }
 input {
   border: 0;
@@ -89,3 +117,275 @@ input {
     background-position: 0% 50%;
   }
 }
+/*------------------ Variables ------------------*/
+
+:root {
+  --main-background: rgb(238, 255, 255);
+  --main-text-color: rgb(0, 27, 27);
+  --dark-cyan: rgb(0, 133, 133);
+}
+
+/*------------------ Global Stuff ------------------*/
+
+* {
+  margin: 0;
+  padding: 0;
+  color: var(--main-text-color);
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+  text-transform: capitalize;
+  color: var(--main-text-color);
+}
+
+body {
+  height: fit-content;
+  min-height: 100vh;
+  background: no-repeat
+    linear-gradient(
+      50deg,
+      var(--main-background) 0%,
+      rgba(197, 215, 225, 0.692) 40%,
+      rgb(251, 253, 254) 50%,
+      var(--main-background) 75%
+    );
+}
+
+/*------------------ Custom Scrollbar ------------------*/
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--main-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--dark-cyan);
+}
+
+.home,
+.home-popular,
+.home-header,
+.home-popular h3 {
+  width: fit-content;
+}
+
+h1 {
+  background-color: inherit;
+}
+
+.home {
+  display: flex;
+  flex-direction: row;
+}
+
+.home-popular {
+  padding: 25vh 8vw 15vh 3vw;
+  width: 63%;
+}
+
+.home-popular  {
+ 
+  margin: 40px ;
+
+}
+
+.home-header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin-right: -480px;
+}
+
+.home-header h1 {
+  font-size: 5.5rem;
+  text-transform: capitalize;
+  font-weight: 700;
+  font-family: 'cochin';
+  font-style: italic;
+  font-variant: small-caps;
+
+}
+.hhead{
+  color: rgb(157, 157, 53);
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 1000px;
+  position: relative;
+  margin-left: -100px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+li {
+  width: fit-content;
+  height: fit-content;
+}
+
+li img {
+  border-radius: 5% / 3%;
+  border: 1px solid var(--main-background);
+  position: relative;
+}
+
+
+
+h2.active {
+  display: block;
+}
+
+h3.active {
+  display: block !important;
+}
+
+.item {
+  flex: 1 0 20%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.6s ease-in-out;
+}
+
+.small1,
+.small2 {
+  height: 200px;
+  position: absolute;
+  z-index: -1;
+  top: 70px;
+}
+
+.big1,
+.big2 {
+  height: 250px;
+  position: absolute;
+  z-index: 0;
+  top: 40px;
+}
+
+.small1 {
+  left: 90px;
+}
+
+.big1 {
+  left: 170px;
+}
+
+.focus {
+  position: absolute;
+  z-index: 1;
+  height: 300px;
+  left: 270px;
+  top: 10px;
+}
+
+.big2 {
+  left: 400px;
+}
+
+.small2 {
+  left: 520px;
+}
+.footer {
+  position: relative;
+  width: 100%;
+  background: #3586ff;
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.menu__link {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+  font-weight: 300;
+}
+
+.menu__link:hover {
+  opacity: 1;
+}
+
+.footer p {
+  color: #fff;
+  margin: 15px 0 10px 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("https://i.ibb.co/wQZVxxk/wave.png");
+  background-size: 1000px 100px;
+}
+
+.wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWaves 4s linear infinite;
+}
+
+.wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+  animation: animate 4s linear infinite !important;
+}
+
+.wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 15px;
+  animation: animateWaves 3s linear infinite;
+}
+
+.wave#wave4 {
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 20px;
+  animation: animate 3s linear infinite;
+}
+
+@keyframes animateWaves {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position-x: -1000px;
+  }
+  100% {
+    background-positon-x: 0px;
+  }
+}
+
+

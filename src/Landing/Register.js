@@ -58,6 +58,8 @@ const Register = () => {
 
       if (isValid) {
         if (role === 'Doctor') {
+         
+          handleEmailcheckDoctor();
           if (emailCheck.find(dt => dt.email === formData.email)) {
             setemailchechError('Email already exist! Try with another Email ')
             console.log(emailchechError);
@@ -77,10 +79,12 @@ const Register = () => {
           }
 
         } else {
+          handleEmailcheckPatient()
           if (emailCheck.find(dt => dt.email === formData.email)) {
-
+            setemailchechError('Email already exist! Try with another Email ')
           }
           else {
+            console.log("else");
             const response = await axios.post(Variable.USER_URL, {
               firstName: formData.doctoName,
               email: formData.email,
@@ -141,7 +145,7 @@ const Register = () => {
   const handleEmailcheckPatient = async () => {
     try {
 
-      await axios.get(Variable.PATHENT_EMAIL)
+      await axios.get(Variable.PATIENT_EMAIL)
         .then(res => setEmailcheck(res.data))
     } catch (error) {
       console.error(error);
@@ -210,8 +214,6 @@ const Register = () => {
     }));
   };
   useEffect(() => {
-    handleEmailcheckPatient()
-    handleEmailcheckDoctor()
     setLoginError('')
     setemailchechError('')
   }, [])

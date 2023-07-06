@@ -5,7 +5,9 @@ import './PatientDoctors.css'
 import Check from '../../Assets/Image/check.png'
 import Rating from 'react-rating-stars-component';
 import Navbar from '../../Admin/Components/Navbar';
+import { useNavigate } from 'react-router-dom';
 const PatientDoctors = () => {
+    const navigate=useNavigate()
     const [doctorDetails, setdoctorDetails] = useState([])
     const fetchDoctorDetails = async () => {
         try {
@@ -23,16 +25,22 @@ const PatientDoctors = () => {
       setRandomNumber(randomNumber);
     };
     useEffect(() => {
-        fetchDoctorDetails();
+        if(localStorage.getItem('Role')==='User')
+        {
+            fetchDoctorDetails();
+        }
+        else{
+            navigate('/Register')
+        }
     });
     const handleSearchChange = (e) => {
         setSearchValue(e.target.value);
       };
     
-      const filteredDoctors = doctorDetails.filter((doctor) =>
-        doctor.specialization.toLowerCase().includes(searchValue.toLowerCase())
-      );
-
+      const filteredDoctors = doctorDetails.filter((doctor) => {
+        const specialization = doctor.specialization || '';
+        return specialization.toLowerCase().includes(searchValue.toLowerCase());
+      });
     return (
         <div className='container12'>
             <Navbar hdlchange={handleSearchChange}/>
@@ -40,7 +48,7 @@ const PatientDoctors = () => {
                 {
                     filteredDoctors.map(doctorDetails =>
                     (
-                        <div className="col">
+                        <div className="col" key={doctorDetails.doctorId}>
                             <div className="card card-profile shadow">
                                 <div className="row justify-content-center">
                                     <div className="col-lg-3 order-lg-2">
@@ -52,29 +60,27 @@ const PatientDoctors = () => {
                                     </div>
                                 </div>
                                 <div className="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-                                    {/* <div className="d-flex justify-content-between">
-                                        <a href="link" className={`btn1 btn-sm mr-4 ${doctorDetails.requestStatus === true ? 'btn-success' : 'btn-danger'}`} >{doctorDetails.requestStatus === true ? (<img src={Check} alt='' height={'30rem'}/>) : 'Not Verified'}</a>
-                                        <a href="link" className="btn1  btn-sm  float-right">{doctorDetails.availability === true ? 'Available' : 'Not Available'}</a>
-                                    </div> */}
+                                   
                                 </div>
                                 <div className="card-body pt-0 pt-md-4">
-                                    <div className="row">
-                                        <div className="col">
-                                            <div className="card-profile-stats d-flex justify-content-center ">
-                                                <div>
-                                                    <span className="heading ">{doctorDetails.experienceYears} Yrs</span>
-                                                    <span className="description ">Experience</span>
+                                    <div className="">
+                                        <div className="">
+                                            <div className="card-profile-stats1  ">
+                                                <div className='innerr'>
+                                                    <span className="heading1 ">{doctorDetails.experienceYears} Yrs</span>
+                                                    <span className="description1 ">Experience</span>
                                                 </div>
-                                                <div>
-                                                    <span className="heading" onChange={generateRandomNumber}>{randomNumber}</span>
-                                                    <span className="description ">Appoinments</span>
+                                                <div className='innerr'>
+                                                    <span className="heading1" onChange={generateRandomNumber}>{randomNumber}</span>
+                                                    <span className="description1 ">Appoinments</span>
                                                 </div>
                                                 
-                                                <div>
-                                                    <span className="heading ">{doctorDetails.experienceYears + 15 }</span>
-                                                    <span className="description ">Completed</span>
+                                                <div className='innerr'>
+                                                    <span className="heading1 ">{doctorDetails.experienceYears + 15 }</span>
+                                                    <span className="description1 ">Completed</span>
                                                 </div>
                                             </div>
+                                            <br />
                                         </div>
                                     </div>
                                     <div className="text-center">
@@ -92,7 +98,7 @@ const PatientDoctors = () => {
                                         </div >
                                         {/* <button className='appoinment btn btn-primary mt-2'>Book An Appoinment</button> */}
                                     
-                                        <div style={{display:'flex',gap:'.2rem',margin:'1rem 5.5rem'}}>
+                                        <div style={{display:'flex',gap:'.2rem',margin:'1rem 6.9rem'}}>
                                         <i class="fab fa-whatsapp" style={{color: 'green',height:'1.5rem'}}></i>{doctorDetails.phone}
                                         </div>
 

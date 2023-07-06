@@ -5,11 +5,15 @@ import './MyAppoinments.css';
 const MyAppoinments = () => {
 
     const [patientDetails, setpatientDetails] = useState([])
+    // const [patID, setpatID] = useState()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const fetchpatientDetails = async () => {
         try {
+            console.log(localStorage.getItem('Id'));
             await axios.get(Variable.APPOINMENT_URL)
-                .then(res => setpatientDetails(res.data.filter(dt => dt.patientId === 1)))
-
+                .then(res => setpatientDetails(res.data.filter(dt => dt.patientId === localStorage.get('Id'))))
+                console.log(Variable.APPOINMENT_URL);
+                console.log(patientDetails);
         } catch (error) {
             console.error(error);
         }
@@ -28,14 +32,15 @@ const MyAppoinments = () => {
     }
     useEffect(() => {
         fetchpatientDetails();
-    });
+        
+    },[fetchpatientDetails]);
 
     return (
         <div style={{ margin: '0 4rem', marginTop: '4rem' }}>
             <div className="row">
                 {
                     patientDetails.map(item => (
-                        <div className="col">
+                        <div className="col" key={item.appointmentId}>
                             <div class=" card card-inverse  " >
                             {/* <img src="assets/Images/SVG/{ c.courseName }.svg" class="card-img-top" alt="ImageDescription" height="150rem" /> */}
                             <h6 class="card-text">Consulting for : {item.diagnose}  </h6>

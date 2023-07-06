@@ -1,199 +1,114 @@
-.signtn {
-  background-color: #23a6d5;
-  padding: .7rem 1.4rem;
-  border-radius: 2rem;
+/* LandingNavbar.css */
+.page-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-/* NAVIGATION */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.nav-wrapper {
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+.grad-bar {
+  height: 8px;
+  background-color: #007bff;
+}
 
 .navbar {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 80px;
-  gap: 5rem;
-  overflow: hidden;
+  padding: 10px 20px;
 }
+
 .navbar img {
-  height: 16px;
-  width: auto;
-  margin-left: 20px;
-}
-
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  justify-content: flex-end;
-  flex-grow: 1;
-}
-
-.nav-item a {
-  color: #000;
-  font-size: 1rem;
-  font-weight: 400;
-  text-decoration: none;
-  transition: color 0.3s ease-out;
-  margin: 0 10px;
-}
-
-.nav-item a:hover {
-  color: #3498db;
-}
-
-/* SEARCH FUNCTION */
-
-#search-icon {
-  font-size: 0.9rem;
-  margin-top: 3px;
-  /* margin-left: 15px; */
-  margin: 0 3rem;
-  transition: color 0.3s ease-out;
-}
-
-#search-icon:hover {
-  color: #3498db;
-  cursor: pointer;
-}
-
-.search {
-  transform: translateX(-35%);
-  transition: transform 0.7s ease-in-out;
-  color: #3498db;
-}
-
-.no-search {
-  transform: translateX(0);
-  transition: transform 0.7s ease-in-out;
-}
-
-.search-input {
-  position: absolute;
-  top: -4px;
-  right: -125px;
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.6s ease;
-}
-
-.search-active {
-  opacity: 1;
-  z-index: 0;
-}
-
-input {
-  border: 0;
-  border-left: 1px solid #ccc;
-  border-radius: 0;
-  outline: 0;
-  padding: 5px;
-}
-
-/* MOBILE MENU & ANIMATION */
-
-.menu-toggle .bar {
-  width: 25px;
-  height: 3px;
-  background-color: #3f3f3f;
-  margin: 5px auto;
-  transition: all 0.3s ease-in-out;
+  height: 40px;
 }
 
 .menu-toggle {
-  justify-self: end;
-  margin-right: 25px;
   display: none;
-}
-
-.menu-toggle:hover {
   cursor: pointer;
 }
 
-#mobile-menu.is-active .bar:nth-child(2) {
-  opacity: 0;
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin-bottom: 5px;
 }
 
-#mobile-menu.is-active .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+.nav {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-#mobile-menu.is-active .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+.nav-item {
+  margin-right: 15px;
 }
 
-/* KEYFRAME ANIMATIONS */
-
-@keyframes gradbar {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.nav-item a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
 }
 
-/* Media Queries */
+.search-input {
+  display: none;
+  margin-left: 10px;
+  padding: 5px;
+  border: 1px solid #333;
+}
 
-/* Mobile Devices - Phones/Tablets */
-
-@media only screen and (max-width: 720px) {
-  .features {
-    flex-direction: column;
-    padding: 50px;
-  }
-
-  /* MOBILE HEADINGS */
-
-  h1 {
-    font-size: 1.9rem;
-  }
-
-  h2 {
-    font-size: 1rem;
-  }
-
-  p {
-    font-size: 0.8rem;
-  }
-
-  /* MOBILE NAVIGATION */
-
-  .navbar ul {
-    display: none;
-  }
-
-  .navbar {
-    justify-content: space-between;
+@media (max-width: 768px) {
+  .navbar img {
+    height: 30px;
   }
 
   .menu-toggle {
     display: block;
   }
 
-  .mobile-nav {
-    transform: translateX(0%) !important;
-    background-color: #fff;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
+  .nav {
+    flex-direction: column;
+    position: absolute;
+    top: 55px;
     left: 0;
-    padding-top: 55px;
-    text-align: center;
-    overflow-y: scroll;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
   }
 
-  .navbar li {
-    padding: 15px;
+  .nav.search {
+    top: 110px;
   }
 
-  .navbar li:first-child {
-    margin-top: 50px;
+  .nav.no-search {
+    top: 55px;
   }
 
-  .navbar li a {
-    font-size: 1rem;
+  .nav.active {
+    transform: translateX(0);
+  }
+
+  .nav-item {
+    margin: 5px 0;
+  }
+
+  .search-input {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
   }
 }
