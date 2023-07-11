@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Variable } from '../../Assets/Variable';
 import './MyAppoinments.css';
+import { useNavigate } from 'react-router-dom';
 const MyAppoinments = () => {
-
+    const navigate=useNavigate()
     const [patientDetails, setpatientDetails] = useState([])
     // const [patID, setpatID] = useState()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,9 +32,16 @@ const MyAppoinments = () => {
         }
     }
     useEffect(() => {
-        fetchpatientDetails();
+        if(localStorage.getItem('Role')==='User')
+        {
+            fetchpatientDetails();
+        }
+        else{
+          navigate('/LandingHome')
+        }
         
-    },[fetchpatientDetails]);
+        
+    },[fetchpatientDetails,navigate]);
 
     return (
         <div style={{ margin: '0 4rem', marginTop: '4rem' }}>

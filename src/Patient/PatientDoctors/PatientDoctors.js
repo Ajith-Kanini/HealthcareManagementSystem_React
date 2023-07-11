@@ -30,7 +30,7 @@ const PatientDoctors = () => {
             fetchDoctorDetails();
         }
         else{
-            navigate('/Register')
+            navigate('/LandingHome')
         }
     });
     const handleSearchChange = (e) => {

@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './NavCards.css'
 import { Variable } from '../../Assets/Variable';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const NavCards = () => {
   const [patientCount, setpatientCount] = useState([])
   const [doctorCount, setDoctorCount] = useState([])
   const [appoinment, setAppoinmentCount] = useState([])
+  const navigate=useNavigate()
   const fetchpatient = async () => {
     try {
       await axios.get(Variable.PATIENT_URL)
@@ -40,9 +42,13 @@ const NavCards = () => {
   };
 
   useEffect(() => {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('Admin_Token')}`;
-    fetchpatient();
-
+    if (localStorage.getItem('Role') === 'Admin') {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('Admin_Token')}`;
+      fetchpatient();
+    }
+    else {
+      navigate('/LandingHome')
+    }
   });
   return (
     <div className="NavCards">

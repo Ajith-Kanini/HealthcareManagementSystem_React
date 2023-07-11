@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Navbar.css'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const Navbar = ({hdlchange}) => {
     const icon={cursor:'pointer'};
-    
-    
+    const navigate=useNavigate()
+    useEffect(() => {
+        if (localStorage.getItem('Role') === 'Admin') {
+          axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('Admin_Token')}`;
+        }
+        else {
+          navigate('/LandingHome')
+        }
+      });
     return (
         <div>
             <nav className="navbar">

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './AppoinmentBooking.css';
 import axios from 'axios';
 import { Variable } from '../../Assets/Variable';
+import { useNavigate } from 'react-router-dom';
 
 const AppoinmentBooking = () => {
+  const navigate=useNavigate()
   const [doctorDetails, setDoctorDetails] = useState([]);
   const [patient, setPatient] = useState({});
   const [special,setSpecial]=useState('')
@@ -50,8 +52,14 @@ const AppoinmentBooking = () => {
   };
   
   useEffect(() => {
-    fetchDoctorDetails();
-    fetchPatientDetail();
+    if(localStorage.getItem('Role')==='User')
+    {
+      fetchDoctorDetails();
+      fetchPatientDetail();
+    }
+    else{
+      navigate('/LandingHome')
+    }
   });
 
   const handleChange = (event) => {

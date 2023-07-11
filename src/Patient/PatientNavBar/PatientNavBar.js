@@ -40,10 +40,16 @@ const PatientNavBar = () => {
   }
   localStorage.setItem('Id',patient.patientId)
   useEffect(()=>{
+    if(localStorage.getItem('Role')==='User')
+    {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('Patient_Token')}`;
     fetchpatient();
+    }
+    else{
+      navigate('/LandingHome')
+    }
     
-  },[])
+  },[navigate])
 
   return (
     <div>

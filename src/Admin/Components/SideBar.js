@@ -12,10 +12,14 @@ const SideBar = () => {
     window.location.reload()
     
   }
-  useEffect(()=>{
-    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('Admin_Token')}`;
-
-  },[])
+  useEffect(() => {
+    if (localStorage.getItem('Role') === 'Admin') {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('Admin_Token')}`;
+    }
+    else {
+      navigate('/LandingHome')
+    }
+  });
   return (
     <section className="section123">
       <div className='SideBar123'>

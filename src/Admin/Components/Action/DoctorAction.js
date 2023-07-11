@@ -4,9 +4,10 @@ import Navbar from '../Navbar';
 import './DoctorAction.css'
 import axios from 'axios';
 import { Variable } from '../../../Assets/Variable';
+import { useNavigate } from 'react-router-dom';
 
 const DoctorAction = () => {
-
+    const navigate=useNavigate()
     const [doctorDetails, setdoctorDetails] = useState([])
     const fetchDoctorDetails = async () => {
         try {
@@ -45,8 +46,15 @@ const DoctorAction = () => {
        }
     }
     useEffect(() => {
-        fetchDoctorDetails();
-    });
+        if(localStorage.getItem('Role')==='Admin')
+    {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('Admin_Token')}`;
+      fetchDoctorDetails();
+    }
+    else{
+      navigate('/LandingHome')
+    }
+    },[navigate]);
     return (
         <div>
             <section className='Dashboard'>

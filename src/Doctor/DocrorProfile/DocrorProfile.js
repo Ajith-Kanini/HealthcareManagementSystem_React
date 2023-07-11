@@ -94,8 +94,14 @@ const DocrorProfile = () => {
   };
 
   useEffect(() => {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('Doctor_Token')}`;
-    fetchDoctorDetails();
+    if(localStorage.getItem('Role')==='Doctor')
+    {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('Doctor_Token')}`;
+      fetchDoctorDetails();
+    }
+    else{
+      navigate('/LandingHome')
+    }
   });
 
   return (
